@@ -45,9 +45,6 @@ async function handleRequest(request) {
       const rulesToUse = selectedRules.length > 0 ? selectedRules : ['广告拦截', '谷歌服务', '国外媒体', '电报消息'];
 
       // Membuat URL untuk Xray, Singbox, dan Clash dengan encode input
-let shortConfig = "";
-let rulesToUse = {}; // Asumsikan rulesToUse sudah diinisialisasi
-let customRules = {}; // Asumsikan customRules sudah diinisialisasi
 
 switch (inputString) {
   case 'panjang_config_1':
