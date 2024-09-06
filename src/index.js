@@ -45,10 +45,25 @@ async function handleRequest(request) {
       const rulesToUse = selectedRules.length > 0 ? selectedRules : ['广告拦截', '谷歌服务', '国外媒体', '电报消息'];
 
       // Membuat URL untuk Xray, Singbox, dan Clash dengan encode input
-      const xrayUrl = `${url.origin}/xray?config=${encodeURIComponent(inputString)}`;
-      const singboxUrl = `${url.origin}/singbox?config=${encodeURIComponent(inputString)}&selectedRules=${encodeURIComponent(JSON.stringify(rulesToUse))}&customRules=${encodeURIComponent(JSON.stringify(customRules))}`;
-      const clashUrl = `${url.origin}/clash?config=${encodeURIComponent(inputString)}&selectedRules=${encodeURIComponent(JSON.stringify(rulesToUse))}&customRules=${encodeURIComponent(JSON.stringify(customRules))}`;
+let shortConfig = "";
+let rulesToUse = {}; // Asumsikan rulesToUse sudah diinisialisasi
+let customRules = {}; // Asumsikan customRules sudah diinisialisasi
 
+switch (inputString) {
+  case 'panjang_config_1':
+    shortConfig = 'cfg1';
+    break;
+  default:
+    shortConfig = encodeURIComponent(inputString); // fallback untuk input lain
+}
+
+const xrayUrl = `${url.origin}/xray?config=${shortConfig}`;
+const singboxUrl = `${url.origin}/singbox?config=${shortConfig}&selectedRules=${encodeURIComponent(JSON.stringify(rulesToUse))}&customRules=${encodeURIComponent(JSON.stringify(customRules))}`;
+const clashUrl = `${url.origin}/clash?config=${shortConfig}&selectedRules=${encodeURIComponent(JSON.stringify(rulesToUse))}&customRules=${encodeURIComponent(JSON.stringify(customRules))}`;
+
+console.log("Xray URL:", xrayUrl);
+console.log("Singbox URL:", singboxUrl);
+console.log("Clash URL:", clashUrl);
       // Kembalikan HTML dengan URL hasil konfigurasi
       return new Response(generateHtml(xrayUrl, singboxUrl, clashUrl), {
         headers: { 'Content-Type': 'text/html' }
