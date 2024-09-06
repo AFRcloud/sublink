@@ -23,7 +23,7 @@ Sublink Worker 是一个可部署在 Cloudflare Worker 上轻量级的订阅转�
 
 ## 快速部署
 
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/7Sageer/sublink-worker)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/AFRcloud/sublink)
 
 > 注意：9月2日之后，短连接服务由 R2 迁移到 KV，请确保API令牌有对应权限
 
